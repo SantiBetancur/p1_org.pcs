@@ -1,0 +1,24 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/1/And.hdl
+/**
+ * And gate:
+ * if (a and b) out = 1, else out = 0 
+ */
+CHIP And {
+    IN a, b;
+    OUT out;
+    
+    PARTS:
+    //// Replace this comment with your code.
+    Not(in=a , out=notA);
+    Not(in=b , out=notB);
+    Or(a=notA , b=notB , out=outOr1);
+    Not(in=outOr1, out=notOr1);
+    Or(a=notA , b=notOr1 , out=outOr2);
+    Or(a=notB, b=notOr1  , out= outOr3);
+    Not(in=outOr2 , out=outNotOr2);
+    Not(in=outOr3 , out=outNotOr3);
+    Or(a=outNotOr2 , b=outNotOr3 , out=out);
+}

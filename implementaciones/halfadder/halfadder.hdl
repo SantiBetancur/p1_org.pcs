@@ -1,0 +1,25 @@
+
+ 
+CHIP halfadder {
+    IN a, b;
+    OUT sum, carry;
+  
+    PARTS:
+    //// Replace this comment with your code.
+    And(a=a , b=b , out=and1Out );
+    Not(in=and1Out , out=not1 );
+
+    And(a=a , b=not1 , out=and2Out);
+    Not(in=and2Out , out=not2);
+    
+    And(a=not1 , b=b , out=and3Out);
+    Not(in=and3Out, out=not3);
+
+    And(a=not2, b=not3, out=and4Out);
+    Not(in=and4Out , out=sum );
+
+    And(a=not1, b=not1 , out=and5Out);
+    Not(in=and5Out, out=carry);
+
+    
+}
